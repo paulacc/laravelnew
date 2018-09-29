@@ -19,6 +19,7 @@ Route::get('/', function () {
 Route::get('controllers/vista1','EjemploController@vista1');
 Route::get('controllers/vista2','EjemploController@vista2');
 
-
+Route::get('peliculas/listado','PeliculasController@mostrarListado');
+//esto es vistas blade 
 Route::get('peliculas/{id}', 'PeliculasController@buscarPeliculaId');
 Route::get('peliculas/buscar/{nombre}', 'PeliculasController@buscarPeliculaNombre');
