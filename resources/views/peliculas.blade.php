@@ -7,7 +7,7 @@
   <body>
 
     @foreach ($peliculas as  $pelicula)
-      <li>{{ $pelicula }}</li>
+      <li>{{ $pelicula->title}}</li>
     @endforeach
 
 

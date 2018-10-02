@@ -40,12 +40,14 @@ class PeliculasController extends Controller
           foreach ($peliculas as $key => $value) {
             if ($nombre == $value){
               return $value;
+              break;
             }
           }
           return "No hay coincidencia";
 
           }
 
+         //No usar if else , es binario.
 
       public function mostrarListado(){
 
