@@ -8,7 +8,8 @@ use Illuminate\Http\Request;
 
 class MovieController extends Controller
 {
-    public function index($title){
+    public function index($title)
+    {
 
       $peliculas = Movie::where('title','like',"%$title%")->get();
       //poner variable despues del operador
@@ -19,11 +20,12 @@ class MovieController extends Controller
     }
 
 
-   public function create()
-   {
-    return   
-   }
+    public function detail($id){
 
+       $movie = Movie::find($id);
+       return view('movie.index',['movie' => $movie]);
+
+    }
 
 
 

@@ -25,8 +25,10 @@ Route::get('peliculas/{id}', 'PeliculasController@buscarPeliculaId');
 //Route::get('peliculas/buscar/{nombre}', 'PeliculasController@buscarPeliculaNombre');
 Route::get('peliculas/buscar/{title}', 'MovieController@index');
 
+//MovieController
 
 
+Route::get('movie/{id}', 'MovieController@detail');
 
 //Genres
 
@@ -34,6 +36,42 @@ Route::get('genres','GenreController@index');
 
 Route::get('genres/last-modified','GenreController@lastModified');
 Route::get('actores','ActorController@directory');
+
+Route::get ('actor/{id}','ActorController@show');
+
+Route::get('relaciones/test',function(){
+   $movie = \App\Movie::find(3);//id de pelicula
+   $genre = \App\Genre::find(1);//id de genre
+
+   //$movie->genre;
+   //dd($movie->genre->movies->toArray());
+   dd($movie->genre->toArray());
+
+});
+
+Route::get('genre/insert','GenreController@insert');
+Route::get('genre/{id}','GenreController@show');
+
+/*Route::get('relaciones/sync', function(){
+  $movie = \App\Movie::find(2);
+  $movie->actors()->sync([1,2])
+  //sync es para tabla pibot
+  //Sync sirve para modificar  ejecutamos esto 1 y 2 por ejemplo cambiara los actores
+  //sync no necesita el save
+  dd($movie->actors->toArray());
+//usar dd para visualizar
+});
+
+Route::get('relaciones/queries', function(){
+  $movie = \App\Movie::find(2);
+  $actors = $movie->actors()->orderBy('first_name')->get();
+  dd($actors->toArray());
+
+});
+
+*/
+
+
 
 
 //Actor

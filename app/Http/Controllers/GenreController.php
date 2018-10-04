@@ -30,4 +30,39 @@ class GenreController extends Controller
      }
 
 
+    public function show($id){
+
+           $genre = Genre::find($id);
+
+           return view('genres.show',['genre' => $genre]);
+
+           //return $genre-toArray(5);
+
+    }
+
+
+    public function insert()
+    {
+
+        /*  $genre = new Genre;
+          $genre->name = 'Animadas';
+          $genre->ranking = 13;
+          $genre->active = 1;
+          $genre->save();
+          */
+
+         $genre = Genre::create([
+          'name' => 'SitCom',
+          'ranking' => 14,
+          'active' => 1,
+
+         ]);
+
+           dd($genre->toArray());
+
+    }
+
+
+
+
 }
