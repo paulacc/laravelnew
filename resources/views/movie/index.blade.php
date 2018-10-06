@@ -11,7 +11,7 @@
           <ol>
             <li> Rating {{$movie->rating}}  </li>
             <li> Premios  {{$movie->awards}}  </li>
-            
+
           </ol>
   </body>
 </html>

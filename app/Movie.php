@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Movie extends Model
 {
     //las relaciones son metodos, pero tambien lo puedo usar como atributo.
+    protected $fillable = ['title','awards','rating','release_date','length','genre_id'];
 
     public function genre()
     {
