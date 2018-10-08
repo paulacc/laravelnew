@@ -15,7 +15,7 @@
              @endforeach
              </div>
           @endif
-          <form action= "/admin/movies" name="agregarPelicula" method="POST">
+          <form action= "/admin/movies" name="agregarPelicula" method="POST" enctype="multipart/form-data">
             @csrf
                <div>
                    <label for="titulo">Titulo</label>
@@ -44,13 +44,18 @@
 
             						<option value="{{$genre->id}}" {{$selected}}>{{ $genre->name }}</option>
             					@endforeach
-				</select>
+				                </select>
 
                </div>
                <div>
                    <label>Fecha de Estreno</label>
                     <input type="date" name="release_date" id="fecha" >
                </div>
+               <div>
+                   <label>Imagen</label>
+                    <input type="file" name="banner" id="banner" >
+               </div>
+
                <input type="submit" value="Agregar Pelicula" name="submit"/>
            </form>
         </div>
