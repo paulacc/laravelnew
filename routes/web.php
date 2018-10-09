@@ -53,12 +53,15 @@ Route::get('genre/insert','GenreController@insert');
 Route::get('genre/{id}','GenreController@show');
 
 
-
+Route::get('admin/movies/index', 'Admin\MovieController@index');
 Route::get('admin/movies/create', 'Admin\MovieController@create');
 Route::get('admin/movies/login', 'Admin\MovieController@insert');
 Route::post('admin/movies','Admin\MovieController@insert');
 Route::get('admin/movies/{id}/edit', 'Admin\MovieController@edit');
 Route::get('admin/movies/{id}', 'Admin\MovieController@update');
+
+
+
 
 
 

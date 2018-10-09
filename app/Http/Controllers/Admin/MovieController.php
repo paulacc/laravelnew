@@ -8,6 +8,25 @@ use App\Movie;
 
 class MovieController extends Controller
 {
+
+     //public function index()
+    //{
+      //$movies = Movie::whereNotNull('genre_id')->get();
+      //$cienciaFiccion = $movies->filter(function($item){
+           //return $item->genre_id == 3;
+
+      //});
+
+      //$moviesModified = $movies->map(function)
+
+      public function index(){
+
+      $movies = Movie::all();
+      $movies->sort();
+      return view('admin.movies.index', ['movies'=> $movies]);
+
+      }
+
    public function create(){
 
        $genres = \App\Genre::orderBy('name')->get();
