@@ -52,6 +52,10 @@
                     <input type="date" name="release_date" id="fecha" >
                </div>
                <div>
+                   <label>Ganancias</label>
+                    <input type="text" name="revenue" id="revenue" >
+               </div>
+               <div>
                    <label>Imagen</label>
                     <input type="file" name="banner" id="banner" >
                </div>

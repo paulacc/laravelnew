@@ -86,15 +86,16 @@ class MovieController extends Controller
 
    }
 
-    public function edit($id)
-    {
-      $movie = Movie::find($id);
-      $genres = \App\Genre::orderBy('name')->get();
-      return view('admin.movie.edit',['movie' => $movie],['genres' => $genres]);
+   public function edit($id)
+   {
+     $movie = Movie::find($id);
+     $genres = \App\Genre::orderBy('name')->get();
 
-    }
+     return view('admin.movies.edit', ['movie' => $movie, 'genres' => $genres]);
+   }
 
-    public function update()
+
+    public function update($id)
     {
       $movie = Movie::find($id);
       $movie->update(request()->all());

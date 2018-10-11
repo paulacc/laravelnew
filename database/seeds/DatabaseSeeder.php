@@ -11,6 +11,20 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+       DB::tables('genres')->insert([
+        [
+          'name' => 'Test 1',
+          'ranking' => '16',
+          'active' => 1
+        ],
+        [
+          'name' => 'Test 2',
+          'ranking' => '17',
+          'active' => 2
+        ]
+
+      ]);
+
         // $this->call(UsersTableSeeder::class);
     }
 }

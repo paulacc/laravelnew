@@ -1,56 +1,72 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Crear película</title>
+	<link rel="stylesheet" type="text/css" href="/css/app.css">
+	<style type="text/css">
+		body {
+			padding: 40px
+		}
+	</style>
+</head>
+<body>
+	<h1>Crear película</h1>
 
-    <link rel="stylesheet" type="text/css" href="/css/app.css">
-    <title></title>
-  </head>
-  <body>
-        <div class="container">
-          @if(count($errors))
-             <div class="alert alert-danger">
-               @foreach ($errors->all() as $error)
-               <li> {{ $error}} </li>
-             @endforeach
-             </div>
-          @endif
-          <form action= "/admin/movies/{{$movie->id}}" name="EditarPelicula" method="POST">
-            @csrf
-            @method
-               <div>
-                   <label for="titulo">Titulo</label>
-                   <input type="text" name="title" id="titulo"  value="{{$movie->title}}"/>
-               </div>
-               <div>
-                   <label for="rating">Rating</label>
-                   <input type="text" name="rating" id="rating" value="{{$rating->title}}"/>
-               </div>
-               <div>
-                   <label for="premios">Premios</label>
-                   <input type="text" name="awards" id="premios" value="{{$movie->title}}" />
-               </div>
-               <div>
-                   <label for="duracion">Duracion</label>
-                   <input type="text" name="length" id="duracion" value="{{old('length')}}"/>
-               </div>
+	<div class="container">
 
-               <div>
-                   <label for="duracion">Genero</label>
-                   <select class="form-control" name="genre_id" id="genre_id">
-                     @foreach ($genres as $genre)
-                       <option id="{{$genre->id}}">{{$genre->name}}</option>
+		@if (count($errors))
+			<div class="alert alert-danger">
+				@foreach ($errors->all() as $error)
+					<p>{{ $error }}</p>
+				@endforeach
+			</div>
+		@endif
 
-                     @endforeach
+		<form action="/admin/movies/{{$movie->id}}" method="POST">
+			@csrf
+			@method('put')
+			<div class="form-group">
+				<label for="title">Títulos</label>
+				<input class="form-control" type="text" name="title" id="title" value="{{$movie->title}}">
+			</div>
+			<div class="form-group">
+				<label for="rating">Rating</label>
+				<input class="form-control" type="text" name="rating" id="rating" value="{{$movie->rating}}">
+			</div>
+			<div class="form-group">
+				<label for="rating_confirmation">Rating</label>
+				<input class="form-control" type="text" name="rating_confirmation" id="rating_confirmation" value="{{$movie->rating}}">
+			</div>
+			<div class="form-group">
+				<label for="awards">Premios</label>
+				<input class="form-control" type="text" name="awards" id="awards" value="{{$movie->awards}}">
+			</div>
+			<div class="form-group">
+				<label for="release_date">Fecha de estreno</label>
+				<input class="form-control" type="date" name="release_date" id="release_date" value="{{$movie->release_date->format('Y-m-d')}}">
+			</div>
+			<div class="form-group">
+				<label for="length">Duración</label>
+				<input class="form-control" type="text" name="length" id="length" value="{{$movie->length}}">
+			</div>
+			<div class="form-group">
+				<label for="genre_id">Género</label>
+				<select class="form-control" name="genre_id" id="genre_id">
+					@foreach ($genres as $genre)
+						@php
+							$selected = ($genre->id == $movie->genre_id) ? 'selected' : '';
+						@endphp
 
-                   </select>
-               </div>
-               <div>
-                   <label>Fecha de Estreno</label>
-                    <input type="date" name="release_date" id="fecha" >
-               </div>
-               <input type="submit" value="Agregar Pelicula" name="submit"/>
-           </form>
-        </div>
-  </body>
+						<option value="{{$genre->id}}" {{$selected}}>{{ $genre->name }}</option>
+					@endforeach
+				</select>
+			</div>
+			<div class="form-group">
+				<button class="btn btn-primary" type="submit" name="enviador">Enviar</button>
+			</div>
+		</form>
+	</div>
+
+</body>
 </html>
