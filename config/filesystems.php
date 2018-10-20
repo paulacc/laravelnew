@@ -14,6 +14,7 @@ return [
     */
 
     'default' => env('FILESYSTEM_DRIVER', 'public'),
+    // para que cree todo en la carpeta public
 
     /*
     |--------------------------------------------------------------------------
